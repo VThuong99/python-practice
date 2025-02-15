@@ -11,21 +11,23 @@ Given a positive integer k, return the number of different ways to
 reach the position endPos starting from startPos, such that you
 perform exactly k steps.
 """
+
+
 def factorial(n):
     if n == 0:
         return 1
     return n * factorial(n - 1)
+
+
 def solve(startPos, endPos, k):
     if k < endPos - startPos or (k - (endPos - startPos)) % 2 != 0:
         return 0
-    
+
     # a: number of steps to the right, b: number of steps to the left
     a = (k + endPos - startPos) // 2
-    b = k - a 
+    b = k - a
     return factorial(a + 1) // (factorial(b) * factorial(a + 1 - b))
+
 
 if __name__ == "__main__":
     print(solve(1, 3, 6))
-
-    
-
